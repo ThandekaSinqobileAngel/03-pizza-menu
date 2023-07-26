@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM  from "react-dom/client";
 import './index.css';
 
+//link for 1 challenge(https://codesandbox.io/s/react-challenge-dev-profile-starter-ng0ghj?file=src/styles.css)
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -71,11 +73,19 @@ function Header() {
 }
 
 
+
 function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
+
+      <div>
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj ={pizza} />
+        ))}
+      </div>
+
+      {/* <Pizza
         name= "Pizza spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
         photoName="pizzas/spinaci.jpg"
@@ -87,7 +97,7 @@ function Menu() {
         ingredients="Tomato, nushrooms"
         photoName="pizzas/funghi.jpg"
         price={12}
-      />
+      /> */}
     </main>
   );
 }
@@ -96,11 +106,11 @@ function Pizza(props) {
   console.log(props);
   return (
     <div className="pizza">
-      <img src={props.photoName} alt={props.name}/>
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name}/>
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price + 3}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price + 3}</span>
       </div>
     </div>
   );
